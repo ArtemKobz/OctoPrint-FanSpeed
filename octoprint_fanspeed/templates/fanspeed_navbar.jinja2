@@ -1,3 +1,5 @@
-<a id="NavbarFanspeedMenu" class="pull-right" data-bind="visible: fanspeedModel.isOperational()">
-{{ _('Fan') }}: <span id="NavbarFanspeed" data-bind="text: speed">N/A</span>
-</a>
+<div data-bind="visible: fanspeedModel.isOperational()" class="nav">
+    <p class="nav navbar-text">
+        {{ _('Fan') }}: <span data-bind="text: speed">N/A</span>
+    </p>
+</div>

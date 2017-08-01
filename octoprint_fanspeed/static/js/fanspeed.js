@@ -11,17 +11,15 @@ $(function() {
             if (plugin != "fanspeed") {
                 return;
             }
-
             self.speed(data.speed)
-            console.log("FanspeedViewModel: fanspeed "+data.speed);
         };
     }
 
 
     ADDITIONAL_VIEWMODELS.push([
         FanspeedViewModel,
-        ["temperatureViewModel"],
-        ["#NavbarFanspeed", "#NavbarFanspeedMenu"]
+        ["printerStateViewModel"],
+        ["#navbar_plugin_fanspeed"]
     ]);
 
 });

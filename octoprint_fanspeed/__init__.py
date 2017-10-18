@@ -10,7 +10,7 @@ class FanSpeedPlugin(octoprint.plugin.StartupPlugin,
                      octoprint.plugin.AssetPlugin):
 
     def __init__(self):
-	    self.speed = "N/A"
+        self.speed = "N/A"
 
     def on_after_startup(self):
         self._logger.info("Fan Speed Plugin loaded")
@@ -46,15 +46,27 @@ class FanSpeedPlugin(octoprint.plugin.StartupPlugin,
 
                 # version check: github repository
                 type="github_release",
-                user="larp-welt",
+                user="ntoff",
                 repo="OctoPrint-FanSpeed",
                 current=self._plugin_version,
 
                 # update method: pip
-                pip="https://github.com/larp-welt/OctoPrint-FanSpeed/archive/{target_version}.zip"
+                pip="https://github.com/ntoff/OctoPrint-FanSpeed/archive/{target_version}.zip"
             )
         )
 
 __plugin_name__ = "Fan Speed"
-__plugin_implementation__ = FanSpeedPlugin()
-__plugin_hooks__ = { "octoprint.comm.protocol.gcode.sent": __plugin_implementation__.process_gcode }
+__plugin_description__ = "Displays the print cooling fan speed in OctoPrint's nav bar"
+__plugin_url__ = "https://github.com/ntoff/OctoPrint-FanSpeed"
+__plugin_author_email__ = "" #unset the email to prevent email about this version going to the wrong author, see "setup.py" for the original author's contact details
+__plugin_author__ = "modified by ntoff (originally by Marcus J. Ertl)"
+
+def __plugin_load__():
+    global __plugin_implementation__
+    __plugin_implementation__ = FanSpeedPlugin()
+    
+    global __plugin_hooks__
+    __plugin_hooks__ = {
+        "octoprint.comm.protocol.gcode.sent": __plugin_implementation__.process_gcode,
+        "octoprint.plugin.softwareupdate.check_config": __plugin_implementation__.get_update_information
+    }

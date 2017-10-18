@@ -1,17 +1,15 @@
 # OctoPrint-Fanspeed
 
-**TODO:** Describe what your plugin does.
+Displays the print cooling fan speed in OctoPrint's nav bar.
+
+Originally by: https://github.com/larp-welt/OctoPrint-FanSpeed
+
+*Numbers may differ from those displayed elsewhere due to different methods of rounding (i.e. round up, round down, ceiling or floor based rounding)*
 
 ## Setup
 
-Install via the bundled [Plugin Manager](https://github.com/foosel/OctoPrint/wiki/Plugin:-Plugin-Manager)
-or manually using this URL:
+Install ~~via the bundled [Plugin Manager](https://github.com/foosel/OctoPrint/wiki/Plugin:-Plugin-Manager)
+or~~ manually using this URL:
 
-    https://github.com/you/OctoPrint-Fanspeed/archive/master.zip
+    https://github.com/ntoff/OctoPrint-Fanspeed/archive/master.zip
 
-**TODO:** Describe how to install your plugin, if more needs to be done than just installing it via pip or through
-the plugin manager.
-
-## Configuration
-
-**TODO:** Describe your plugin's configuration options (if any).

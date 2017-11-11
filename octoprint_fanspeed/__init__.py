@@ -12,9 +12,6 @@ class FanSpeedPlugin(octoprint.plugin.StartupPlugin,
     def __init__(self):
         self.speed = "N/A"
 
-    def on_after_startup(self):
-        self._logger.info("Fan Speed Plugin loaded")
-
     def process_gcode(self, comm_instance, phase, cmd, cmd_type, gcode, *args, **kwargs):
         if gcode and gcode.startswith('M106'):
             s = re.search("S(\d+)", cmd)
@@ -24,11 +21,9 @@ class FanSpeedPlugin(octoprint.plugin.StartupPlugin,
                     self.speed = gettext('Off')
                 else:
                     self.speed = str(int(float(s)*100.0/255.0))+"%"
-                self._logger.info(gettext("Fan")+": "+self.speed)
                 self._plugin_manager.send_plugin_message(self._identifier, dict(speed=self.speed))
         if gcode and gcode.startswith('M107'):
             self.speed = gettext('Off')
-            self._logger.info(gettext("Fan")+": "+self.speed)
             self._plugin_manager.send_plugin_message(self._identifier, dict(speed=self.speed))
         return None
 

@@ -50,11 +50,11 @@ class FanSpeedPlugin(octoprint.plugin.StartupPlugin,
             )
         )
 
-__plugin_name__ = "Fan Speed"
+__plugin_name__ = "Fan Speed (ntoff mod)"
 __plugin_description__ = "Displays the print cooling fan speed in OctoPrint's nav bar"
 __plugin_url__ = "https://github.com/ntoff/OctoPrint-FanSpeed"
 __plugin_author_email__ = "" #unset the email to prevent email about this version going to the wrong author, see "setup.py" for the original author's contact details
-__plugin_author__ = "modified by ntoff (originally by Marcus J. Ertl)"
+__plugin_author__ = "Marcus J. Ertl (modified by ntoff)"
 
 def __plugin_load__():
     global __plugin_implementation__

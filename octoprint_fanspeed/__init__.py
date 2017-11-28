@@ -14,10 +14,10 @@ class FanSpeedPlugin(octoprint.plugin.StartupPlugin,
 
     def process_gcode(self, comm_instance, phase, cmd, cmd_type, gcode, *args, **kwargs):
         if gcode and gcode.startswith('M106'):
-            s = re.search("S(\d+)", cmd)
+            s = re.search("S(.+)", cmd)
             if s and s.group(1):
                 s = s.group(1)
-                if int(s) == 0:
+                if float(s) == 0:
                     self.speed = gettext('Off')
                 else:
                     self.speed = str(int(float(s)*100.0/255.0))+"%"

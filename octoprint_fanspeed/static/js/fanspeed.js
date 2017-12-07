@@ -11,7 +11,7 @@ $(function() {
             if (plugin != "fanspeed") {
                 return;
             }
-            self.speed(data.speed)
+            self.speed(gettext(data.speed))
         };
     }
 

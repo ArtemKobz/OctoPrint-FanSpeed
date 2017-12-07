@@ -4,6 +4,7 @@ from __future__ import absolute_import
 import re
 import octoprint.plugin
 from flask.ext.babel import gettext
+import logging
 
 class FanSpeedPlugin(octoprint.plugin.StartupPlugin,
                      octoprint.plugin.TemplatePlugin,
@@ -11,6 +12,21 @@ class FanSpeedPlugin(octoprint.plugin.StartupPlugin,
 
     def __init__(self):
         self.speed = "N/A"
+
+    def process_gcode_received(self, comm, line, *args, **kwargs):
+        if "Fanspeed" not in line:
+            return line
+
+        fan_response = re.search("(\d*\.?\d+?)", line)
+        if fan_response and fan_response.group(1):
+            fan_response = fan_response.group(1)
+            if float(fan_response) == 0:
+                self.speed = gettext('Off')
+            else:
+                self._logger.info("Fan speed: "+fan_response)
+                self.speed = str(int(float(fan_response)*100.0/255.0))+"%"
+            self._plugin_manager.send_plugin_message(self._identifier, dict(speed=self.speed))
+        return line
 
     def process_gcode(self, comm_instance, phase, cmd, cmd_type, gcode, *args, **kwargs):
         if gcode and gcode.startswith('M106'):
@@ -39,13 +55,11 @@ class FanSpeedPlugin(octoprint.plugin.StartupPlugin,
                 displayName="Fan Speed",
                 displayVersion=self._plugin_version,
 
-                # version check: github repository
                 type="github_release",
                 user="ntoff",
                 repo="OctoPrint-FanSpeed",
                 current=self._plugin_version,
 
-                # update method: pip
                 pip="https://github.com/ntoff/OctoPrint-FanSpeed/archive/{target_version}.zip"
             )
         )
@@ -63,5 +77,6 @@ def __plugin_load__():
     global __plugin_hooks__
     __plugin_hooks__ = {
         "octoprint.comm.protocol.gcode.sent": __plugin_implementation__.process_gcode,
+        "octoprint.comm.protocol.gcode.received": __plugin_implementation__.process_gcode_received,
         "octoprint.plugin.softwareupdate.check_config": __plugin_implementation__.get_update_information
     }

@@ -23,7 +23,6 @@ class FanSpeedPlugin(octoprint.plugin.StartupPlugin,
             if float(fan_response) == 0:
                 self.speed = gettext('Off')
             else:
-                self._logger.info("Fan speed: "+fan_response)
                 self.speed = str(int(float(fan_response)*100.0/255.0))+"%"
             self._plugin_manager.send_plugin_message(self._identifier, dict(speed=self.speed))
         return line

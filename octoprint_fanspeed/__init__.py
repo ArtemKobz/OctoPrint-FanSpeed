@@ -45,7 +45,8 @@ class FanSpeedPlugin(octoprint.plugin.StartupPlugin,
     def get_assets(self):
         return { 
             "js": ["js/fanspeed.js"],
-            "css": ["css/fanspeed.css"]
+            "css": ["css/fanspeed.css"],
+            "less": ["less/fanspeed.less"]
         }
 
     def get_update_information(self):

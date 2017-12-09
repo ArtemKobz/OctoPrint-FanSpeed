@@ -2,6 +2,8 @@
 
 Displays the print cooling fan speed in OctoPrint's nav bar.
 
+![screenshot](./extras/assets/img/plugins/fanspeed/navbar.png)
+
 Originally by: https://github.com/larp-welt/OctoPrint-FanSpeed
 
 ## Notes

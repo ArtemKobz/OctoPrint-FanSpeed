@@ -1,3 +1,43 @@
 #fanspeed {
   margin: 0px 4px 0px 0px;
 }
+.navbar-inner .navbar-text {
+  color: #333;
+  text-shadow: 0 1px 0 #c8c8c8;
+  cursor: default;
+}
+.navbar-inner.blue .navbar-text,
+.navbar-inner.red .navbar-text,
+.navbar-inner.orange .navbar-text,
+.navbar-inner.yellow .navbar-text,
+.navbar-inner.violet .navbar-text,
+.navbar-inner.black .navbar-text {
+  color: #f2f2f2;
+}
+.navbar-inner.white .navbar-text {
+  color: #333;
+}
+.navbar-inner.black .navbar-text {
+  text-shadow: 0 1px 0 #5e5e5e;
+}
+.navbar-inner.white .navbar-text {
+  text-shadow: 0 1px 0 #c8c8c8;
+}
+.navbar-inner.red .navbar-text {
+  text-shadow: 0 1px 0 #d86761;
+}
+.navbar-inner.blue .navbar-text {
+  text-shadow: 0 1px 0 #1a66ff;
+}
+.navbar-inner.green .navbar-text {
+  text-shadow: 0 1px 0 #50da00;
+}
+.navbar-inner.yellow .navbar-text {
+  text-shadow: 0 1px 0 #c2b00c;
+}
+.navbar-inner.orange .navbar-text {
+  text-shadow: 0 1px 0 #f6a570;
+}
+.navbar-inner.violet .navbar-text {
+  text-shadow: 0 1px 0 #a774ff;
+}

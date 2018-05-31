@@ -1,3 +1,3 @@
-<div id="fanspeed" data-bind="visible: fanspeedModel.isOperational(), visible: loginState.hasPermissionKo(access.permissions.STATUS)" class="navbar-text">
+<div id="fanspeed" data-bind="visible: fanspeedModel.isOperational() && loginState.hasPermissionKo(access.permissions.STATUS)" class="navbar-text">
     <span>{{ _('Fan') }}: </span><span data-bind="text: speed">N/A</span>
 </div>

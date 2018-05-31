@@ -3,6 +3,8 @@ $(function() {
         var self = this;
 
         self.fanspeedModel = parameters[0];
+        self.loginState = parameters[1];
+        self.access = parameters[2];
 
         self.speed = ko.observable();
         self.speed("N/A")
@@ -11,15 +13,18 @@ $(function() {
             if (plugin != "fanspeed") {
                 return;
             }
-            self.speed(gettext(data.speed))
+            if (data.speed) {
+                self.speed(gettext(data.speed))
+            }
         };
     }
 
 
-    ADDITIONAL_VIEWMODELS.push([
-        FanspeedViewModel,
-        ["printerStateViewModel"],
-        ["#navbar_plugin_fanspeed"]
-    ]);
+    OCTOPRINT_VIEWMODELS.push({
+        construct: FanspeedViewModel,
+        
+        dependencies: ["printerStateViewModel", "loginStateViewModel", "accessViewModel"],
+        elements: ["#navbar_plugin_fanspeed"]
+    });
 
 });

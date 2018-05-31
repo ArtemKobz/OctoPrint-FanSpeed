@@ -51,7 +51,7 @@ class FanSpeedPlugin(octoprint.plugin.StartupPlugin,
 
     def get_update_information(self):
         return dict(
-            costestimation=dict(
+            navbarfanspeed=dict(
                 displayName="Fan Speed",
                 displayVersion=self._plugin_version,
 
